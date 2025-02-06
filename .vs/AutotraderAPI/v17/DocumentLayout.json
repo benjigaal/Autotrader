@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\gaalgb\\source\\repos\\AutotraderAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C5E19CFB-C686-40B7-AE48-A9B95C781D9F}|AutotraderAPI\\AutotraderAPI.csproj|c:\\users\\gaalgb\\source\\repos\\autotraderapi\\autotraderapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C5E19CFB-C686-40B7-AE48-A9B95C781D9F}|AutotraderAPI\\AutotraderAPI.csproj|solutionrelative:autotraderapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C5E19CFB-C686-40B7-AE48-A9B95C781D9F}|AutotraderAPI\\AutotraderAPI.csproj|c:\\users\\gaalgb\\source\\repos\\autotraderapi\\autotraderapi\\controllers\\carscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C5E19CFB-C686-40B7-AE48-A9B95C781D9F}|AutotraderAPI\\AutotraderAPI.csproj|solutionrelative:autotraderapi\\controllers\\carscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C5E19CFB-C686-40B7-AE48-A9B95C781D9F}|AutotraderAPI\\AutotraderAPI.csproj|c:\\users\\gaalgb\\source\\repos\\autotraderapi\\autotraderapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C5E19CFB-C686-40B7-AE48-A9B95C781D9F}|AutotraderAPI\\AutotraderAPI.csproj|solutionrelative:autotraderapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C5E19CFB-C686-40B7-AE48-A9B95C781D9F}|AutotraderAPI\\AutotraderAPI.csproj|c:\\users\\gaalgb\\source\\repos\\autotraderapi\\autotraderapi\\models\\dtos\\dto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -30,17 +30,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\gaalgb\\source\\repos\\AutotraderAPI\\AutotraderAPI\\Program.cs",
               "RelativeDocumentMoniker": "AutotraderAPI\\Program.cs",
               "ToolTip": "C:\\Users\\gaalgb\\source\\repos\\AutotraderAPI\\AutotraderAPI\\Program.cs",
               "RelativeToolTip": "AutotraderAPI\\Program.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAAmwDAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAAA6wDAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-06T15:37:10.094Z",
               "EditorCaption": ""
@@ -72,13 +72,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "CarsController.cs",
               "DocumentMoniker": "C:\\Users\\gaalgb\\source\\repos\\AutotraderAPI\\AutotraderAPI\\Controllers\\CarsController.cs",
               "RelativeDocumentMoniker": "AutotraderAPI\\Controllers\\CarsController.cs",
               "ToolTip": "C:\\Users\\gaalgb\\source\\repos\\AutotraderAPI\\AutotraderAPI\\Controllers\\CarsController.cs",
               "RelativeToolTip": "AutotraderAPI\\Controllers\\CarsController.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAwCYAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAewCUAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-30T17:13:14.863Z",
               "EditorCaption": ""
