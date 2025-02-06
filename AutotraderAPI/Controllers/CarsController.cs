@@ -28,7 +28,78 @@ namespace AutotraderAPI.Controllers
 
                 return StatusCode(201, new {result = car, message = "Sikeres felvétel."});
             }
-            return Ok();
+        }
+
+        [HttpGet]
+        public ActionResult GetAllCar()
+        {
+            using (var context = new AutotraderContext())
+            {
+                var cars = context.Cars.ToList();
+                if(cars != null)
+                {
+                    return Ok(new {result = cars, message = "Sikeres lekérdezés."});
+                }
+                Exception e = new();
+                return BadRequest(new { result = "", message = e.Message });
+            }
+        }
+
+        [HttpGet("ById")]
+        public ActionResult GetCar(Guid id)
+        {
+            using(var context = new AutotraderContext())
+            {
+                var car = context.Cars.FirstOrDefault(x => x.Id == id);
+                if(car != null)
+                {
+                    return Ok(new { result = car, message = "Sikeres találat." });
+
+                }
+
+                return NotFound(new { result = "", message = "Nincs ilyen autó az adatbázisban.." });
+            }
+        }
+        [HttpDelete]
+        public ActionResult DeleteCar(Guid id)
+        {
+            using (var context = new AutotraderContext())
+            {
+                var car = context.Cars.FirstOrDefault(x => x.Id == id);
+                if (car != null)
+                {
+                    context.Cars.Remove(car);
+                    context.SaveChanges();
+
+                    return Ok(new { result = car, message = "Sikeres törlés." });
+                }
+
+                return NotFound(new { result = "", message = "Nincs ilyen autó az adatbázisban.." });
+
+            }
+        }
+        [HttpPut]
+        public ActionResult UpdateCar(Guid id, UpdateCarDto updateCarDto)
+        {
+            using (var context = new AutotraderContext())
+            {
+                var existingCar = context.Cars.FirstOrDefault(x => x.Id == id);
+                if (existingCar != null)
+                {
+                    existingCar.Brand = updateCarDto.Brand;
+                    existingCar.Type = updateCarDto.Type;
+                    existingCar.Color = updateCarDto.Color;
+                    existingCar.Myear = updateCarDto.Myear;
+                    existingCar.UpdatedTime = DateTime.Now;
+                    context.Cars.Update(existingCar);
+                    context.SaveChanges();
+
+                    return Ok(new { result = existingCar, message = "Sikeres módosítás." });
+                }
+
+                return NotFound(new { result = "", message = "Nincs ilyen autó az adatbázisban.." });
+
+            }
         }
     }
 }
