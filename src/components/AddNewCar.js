@@ -40,20 +40,24 @@ const handleChange = (event) => {
         <form onSubmit={handleSubmit}>
           <label>
             Márka:
-            <input type="text" id="brand" name="brand" value={carData.brand} onChange={handleChange} className='' placeholder='Autó márkája'/>
+            <input type="text" id="brand" name="brand" value={carData.brand} onChange={handleChange} className='form-control' placeholder='Autó márkája'/>
           </label>
+          <br></br>
           <label>
             Típus:
-            <input type="text" id="type" name="type" value={carData.type} onChange={handleChange} className='' placeholder='Autó típusa'/>
+            <input type="text" id="type" name="type" value={carData.type} onChange={handleChange} className='form-control' placeholder='Autó típusa'/>
           </label>
+          <br></br>
           <label>
             Szín:
-            <input type="text" id="color" name="color" value={carData.color} onChange={handleChange} className='' placeholder='Autó színe'/>
+            <input type="text" id="color" name="color" value={carData.color} onChange={handleChange} className='form-control' placeholder='Autó színe'/>
           </label>
+          <br></br>
           <label>
             Gyártási év:
-            <input type="date" id="myear" name="myear" value={carData.myear} onChange={handleChange} className='' placeholder='Autó gyártási év-hónap-nap' />
+            <input type="date" id="myear" name="myear" value={carData.myear} onChange={handleChange} className='form-control' placeholder='Autó gyártási év-hónap-nap' />
           </label>
+          <br></br>
           <button type="submit" className='btn btn-primary'>Bevitel</button>
         </form>
       </div>
