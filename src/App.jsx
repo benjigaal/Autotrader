@@ -1,14 +1,11 @@
 import './App.css';
 import React from 'react';
+import AddNewCar from './components/AddNewCar';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-            Hello
-        </p>
-      </header>
+    <div className="container">
+      <AddNewCar />
     </div>
   );
 }
