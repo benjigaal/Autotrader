@@ -1,4 +1,6 @@
 
+using AutotraderAPI.Models;
+
 namespace AutotraderAPI
 {
     public class Program
@@ -6,6 +8,9 @@ namespace AutotraderAPI
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Services.AddDbContext<AutotraderContext>(); 
+            //Regisztrálom az osztályt aminek a példányosítása innentõl kezdve a builder feladata
 
             var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 

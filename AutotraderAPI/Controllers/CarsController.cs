@@ -1,7 +1,7 @@
 ﻿using AutotraderAPI.Models;
 using AutotraderAPI.Models.DTOs;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace AutotraderAPI.Controllers
 {
@@ -9,8 +9,15 @@ namespace AutotraderAPI.Controllers
     [ApiController]
     public class CarsController : ControllerBase
     {
+        private readonly AutotraderContext context;
+
+        public CarsController(AutotraderContext context)
+        {
+            this.context = context;
+        }
+
         [HttpPost]
-        public ActionResult AddNewCar(CreateCarDto createdCarDto)
+        public async Task<ActionResult> AddNewCar(CreateCarDto createdCarDto)
         {
             var car = new Car 
             { 
@@ -21,85 +28,71 @@ namespace AutotraderAPI.Controllers
                 Myear = createdCarDto.Myear
             };
 
-            using (var context = new AutotraderContext())
-            {
-                context.Cars.Add(car);
-                context.SaveChanges();
+            
+                await context.Cars.AddAsync(car);
+                await context.SaveChangesAsync();
 
                 return StatusCode(201, new {result = car, message = "Sikeres felvétel."});
-            }
         }
 
         [HttpGet]
-        public ActionResult GetAllCar()
+        public async Task<ActionResult> GetAllCar()
         {
-            using (var context = new AutotraderContext())
-            {
-                var cars = context.Cars.ToList();
-                if(cars != null)
-                {
-                    return Ok(new {result = cars, message = "Sikeres lekérdezés."});
-                }
-                Exception e = new();
-                return BadRequest(new { result = "", message = e.Message });
-            }
+              var cars = await context.Cars.ToListAsync();
+              if(cars != null)
+              {
+                  return Ok(new {result = cars, message = "Sikeres lekérdezés."});
+              }
+
+              Exception e = new();
+              return BadRequest(new { result = "", message = e.Message });
         }
 
         [HttpGet("ById")]
-        public ActionResult GetCar(Guid id)
+        public async Task<ActionResult> GetCar(Guid id)
         {
-            using(var context = new AutotraderContext())
-            {
-                var car = context.Cars.FirstOrDefault(x => x.Id == id);
-                if(car != null)
-                {
-                    return Ok(new { result = car, message = "Sikeres találat." });
+              var car = await context.Cars.FirstOrDefaultAsync(x => x.Id == id);
+              if(car != null)
+              {
+                  return Ok(new { result = car, message = "Sikeres találat." });
+              }
 
-                }
-
-                return NotFound(new { result = "", message = "Nincs ilyen autó az adatbázisban.." });
-            }
+              return NotFound(new { result = "", message = "Nincs ilyen autó az adatbázisban.." });
         }
+
         [HttpDelete]
-        public ActionResult DeleteCar(Guid id)
+        public async Task<ActionResult> DeleteCar(Guid id)
         {
-            using (var context = new AutotraderContext())
-            {
-                var car = context.Cars.FirstOrDefault(x => x.Id == id);
-                if (car != null)
-                {
-                    context.Cars.Remove(car);
-                    context.SaveChanges();
+              var car = await context.Cars.FirstOrDefaultAsync(x => x.Id == id);
+              if (car != null)
+              {
+                  context.Cars.Remove(car);
+                  await context.SaveChangesAsync();
 
-                    return Ok(new { result = car, message = "Sikeres törlés." });
-                }
+                  return Ok(new { result = car, message = "Sikeres törlés." });
+              }
 
-                return NotFound(new { result = "", message = "Nincs ilyen autó az adatbázisban.." });
-
-            }
+              return NotFound(new { result = "", message = "Nincs ilyen autó az adatbázisban.." });
         }
+
         [HttpPut]
-        public ActionResult UpdateCar(Guid id, UpdateCarDto updateCarDto)
+        public async Task<ActionResult> UpdateCar(Guid id, UpdateCarDto updateCarDto)
         {
-            using (var context = new AutotraderContext())
-            {
-                var existingCar = context.Cars.FirstOrDefault(x => x.Id == id);
-                if (existingCar != null)
-                {
-                    existingCar.Brand = updateCarDto.Brand;
-                    existingCar.Type = updateCarDto.Type;
-                    existingCar.Color = updateCarDto.Color;
-                    existingCar.Myear = updateCarDto.Myear;
-                    existingCar.UpdatedTime = DateTime.Now;
-                    context.Cars.Update(existingCar);
-                    context.SaveChanges();
+              var existingCar = await context.Cars.FirstOrDefaultAsync(x => x.Id == id);
+              if (existingCar != null)
+              {
+                  existingCar.Brand = updateCarDto.Brand;
+                  existingCar.Type = updateCarDto.Type;
+                  existingCar.Color = updateCarDto.Color;
+                  existingCar.Myear = updateCarDto.Myear;
+                  existingCar.UpdatedTime = DateTime.Now;
+                  context.Cars.Update(existingCar);
+                  await context.SaveChangesAsync();
 
-                    return Ok(new { result = existingCar, message = "Sikeres módosítás." });
-                }
+                  return Ok(new { result = existingCar, message = "Sikeres módosítás." });
+              }
 
-                return NotFound(new { result = "", message = "Nincs ilyen autó az adatbázisban.." });
-
-            }
+              return NotFound(new { result = "", message = "Nincs ilyen autó az adatbázisban.." });
         }
     }
 }
