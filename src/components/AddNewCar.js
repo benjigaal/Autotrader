@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 
-function AddNewCar() {
+function AddNewCar(props) {
   const [carData, setCarData] = useState(
     {
       brand: "",
@@ -32,6 +32,7 @@ const handleChange = (event) => {
        return
     }
     const response = await request.json();
+    props.handleCount();
     console.log(response.message);
   }
 

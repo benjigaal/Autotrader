@@ -1,13 +1,21 @@
 import './App.css';
-import React from 'react';
+import { useState } from 'react';
 import AddNewCar from './components/AddNewCar';
 import GetAllCars from './components/GetAllCars';
 
-function App() {
+function App() 
+{
+  const [count, setCount] = useState(0);
+  const handleCount = () => 
+  {
+    setCount(count + 1);
+  }
+  console.log(count);
+
   return (
     <div className="container">
-      <AddNewCar />
-      <GetAllCars />
+      <AddNewCar handleCount={handleCount}/>
+      <GetAllCars count={count} handleCount={handleCount}/>
     </div>
   );
 }
