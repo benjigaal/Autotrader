@@ -1,0 +1,22 @@
+import './App.css';
+import { useState } from 'react';
+import AddNewCar from './components/AddNewCar';
+import GetAllCars from './components/GetAllCars';
+
+function App() 
+{
+  const [count, setCount] = useState(0);
+  const handleCount = () => 
+  {
+    setCount(count + 1);
+  }
+  console.log(count);
+
+  return (
+    <div className="container">
+      <GetAllCars count={count} handleCount={handleCount}/>
+    </div>
+  );
+}
+
+export default App;
